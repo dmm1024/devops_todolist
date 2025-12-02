@@ -11,7 +11,7 @@ RUN pip install --user --no-cache-dir -r requirements.txt
 
 COPY . .
 # Run database migrations after copying code
-RUN ~/.local/bin/python manage.py migrate
+RUN python manage.py migrate
 
 # Run stage
 FROM python:${PYTHON_BASE_VERSION}
