@@ -2,7 +2,7 @@ ARG PYTHON_BASE_VERSION=3.13
 
 
 # Build stage
-FROM python:${PYTHON_BASE_VERSION}-slim AS build
+FROM python:${PYTHON_BASE_VERSION} AS build
 
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
@@ -14,7 +14,7 @@ COPY . .
 RUN ~/.local/bin/python manage.py migrate
 
 # Run stage
-FROM python:${PYTHON_BASE_VERSION}-slim
+FROM python:${PYTHON_BASE_VERSION}
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 COPY --from=build /app /app
